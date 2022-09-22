@@ -1,0 +1,41 @@
+#!/usr/bin/make -f
+
+confflags  = --with-libxml2
+confflags += --with-freetype
+confflags += --with-bdj-type=j2se
+confflags += --disable-doxygen-ps
+confflags += --disable-doxygen-pdf
+
+confflags_java   = --enable-bdjava-jar
+confflags_nojava = --disable-bdjava-jar
+
+# Use default java implementation
+export JDK_HOME=/usr/lib/jvm/default-java
+ifeq (,$(wildcard $(JDK_HOME)))
+    $(info "warning: No suitable jni.h was found. Package will most probably FTBFS!")
+endif
+
+ifneq (,$(wildcard /usr/share/javahelper/java-vars.mk))
+DH_ADDONS = --with javahelper
+endif
+
+%:
+	dh $@ $(DH_ADDONS)
+
+override_dh_auto_configure:
+ifneq (,$(findstring libbluray-bdj,$(shell dh_listpackages)))
+	dh_auto_configure -- $(confflags) $(confflags_java)
+else
+	dh_auto_configure -- $(confflags) $(confflags_nojava)
+endif
+
+override_dh_auto_build-indep:
+	# all-local builds the JAR
+	$(MAKE) doxygen-doc all-local
+
+# no test/install for indep
+override_dh_auto_test-indep override_dh_auto_install-indep:
+
+override_dh_clean:
+	dh_clean
+	rm -rf src/libbluray/bdj/build

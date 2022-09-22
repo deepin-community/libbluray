@@ -1,0 +1,20 @@
+From: Sebastian Ramacher <sramacher@debian.org>
+Date: Wed, 14 Jun 2017 19:32:24 +0200
+Subject: Do not download image from the web.
+
+---
+ doc/doxygen-footer.html | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/doc/doxygen-footer.html b/doc/doxygen-footer.html
+index b45f295..11cbc77 100644
+--- a/doc/doxygen-footer.html
++++ b/doc/doxygen-footer.html
+@@ -5,7 +5,6 @@
+     <a href="http://www.doxygen.org/index.html">
+     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1<br />
+     Copyright &copy; 2010 John Stebbins et al.<br />
+-    <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" border="0" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png"/></a><br/>
+     This documentation is licensed and distributed under the <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.<br/>
+   </small>
+ </div>

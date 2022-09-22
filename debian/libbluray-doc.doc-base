@@ -1,0 +1,7 @@
+Document: libbluray-doc
+Title: libbluray Documentation
+Section: Programming/C
+
+Format: HTML
+Index: /usr/share/doc/libbluray-dev/html/index.html
+Files: /usr/share/doc/libbluray-dev/html/*.html

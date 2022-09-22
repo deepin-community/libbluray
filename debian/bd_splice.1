@@ -1,0 +1,36 @@
+.TH BDSPLICE "1" "July 2020" "libbluray 1.2.1" "User Commands"
+.SH NAME
+bdsplice \- Find and splice BD disc clips together into destination file
+.SH SYNOPSIS
+.B bdsplice
+\fI\,-t title    \/\fR[\fI\,-c first\/\fR[\fI\,-last\/\fR]] [\fI\,-k keyfile\/\fR] [\fI\,-a angle\/\fR]  \fI\,<bd path> \/\fR[\fI\,dest\/\fR]
+.SH DESCRIPTION
+\fI\,bdsplice\fP \fB\-p\fR playlist [\-c first[\-last]] [\-k keyfile] [\-a angle]
+<bd path> [dest]
+.SS "Summary:"
+.IP
+Given a title or playlist number and Blu\-Ray directory tree, find the clips that compose the movie and splice them together in the destination file
+.SH OPTIONS
+.TP
+t N
+\- Index of title to splice. First title is 1.
+.TP
+p N
+\- Playlist to splice.
+.TP
+a N
+\- Angle. First angle is 1.
+.TP
+c N or N\-M
+\- Chapter or chapter range. First chapter is 1.
+.TP
+k keyfile
+\- AACS keyfile path.
+.TP
+<bd path>
+\- Path to root of Blu\-Ray directory tree.
+.TP
+[dest]
+\- Destination of spliced clips. stdout if not specified.
+.SH AUTHOR
+This manpage was written by Vasyl Gello.

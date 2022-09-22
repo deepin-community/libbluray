@@ -1,0 +1,670 @@
+libbluray (1:1.3.0-3) unstable; urgency=medium
+
+  * Upload to unstable
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Sun, 08 Aug 2021 11:07:03 +0200
+
+libbluray (1:1.3.0-2) experimental; urgency=medium
+
+  * debian/: Use embedded libasm again (LP: #1893449)
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Sun, 25 Jul 2021 16:27:48 +0200
+
+libbluray (1:1.3.0-1) experimental; urgency=medium
+
+  [ Helmut Grohne ]
+  * Drop unused graphviz dependency since HAVE_DOT=no (Closes: #982187)
+
+  [ Sebastian Ramacher ]
+  * New upstream release
+  * debian/patches: Remove patch integrated upstream
+  * debian/libbluray2.symbols: Add new symbol
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Mon, 26 Apr 2021 11:28:43 +0200
+
+libbluray (1:1.2.1-4) unstable; urgency=medium
+
+  * debian/patches:
+    - Revert "Fix name of llibudfread's pkg-config file"
+    - Update check for new libudfread pkg-config file name
+  * debian/control:
+    - Bump libudfread-dev Depends for new pkg-config file name
+    - Bump Standards-Version
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Sun, 20 Dec 2020 14:03:40 +0100
+
+libbluray (1:1.2.1-3) unstable; urgency=medium
+
+  * debian/patches: Fix name of libudfread's pkg-config file
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Sun, 25 Oct 2020 09:59:07 +0100
+
+libbluray (1:1.2.1-2) unstable; urgency=medium
+
+  * debian/control: Add libudfread-dev to libbluray-dev's Depends
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Sun, 25 Oct 2020 09:34:21 +0100
+
+libbluray (1:1.2.1-1) unstable; urgency=medium
+
+  * New upstream release
+  * debian/control:
+    - Build with libudfread-dev
+    - Set RRR: no
+  * debian/libbluray-bin.install: Install all binaries (Closes: #964253)
+
+  [ Vasyl Gello ]
+  * Create manpages for bdsplice and bd_list_titles
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Sat, 24 Oct 2020 22:55:45 +0200
+
+libbluray (1:1.2.0-3) unstable; urgency=medium
+
+  * debian/: Fix Arch: all build (Closes: #964445)
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Wed, 08 Jul 2020 00:24:27 +0200
+
+libbluray (1:1.2.0-2) unstable; urgency=medium
+
+  * Build with --disable-doxygen-{pdf,ps} to fix build in non-minimal build
+    environments (Closes: #964252)
+  * debian/: Bump debhelper compat to 13
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Mon, 06 Jul 2020 21:57:01 +0200
+
+libbluray (1:1.2.0-1) unstable; urgency=medium
+
+  [ Ondřej Nový ]
+  * Bump Standards-Version to 4.4.0
+
+  [ Sebastian Ramacher ]
+  * New upstream release
+  * debian/control:
+    - Replace libfreetype6-dev with libfreetype-dev
+    - Bump Standards-Version
+  * debian/libbluray2.symbols: Add new symbols
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Sat, 28 Mar 2020 18:51:16 +0100
+
+libbluray (1:1.1.2-2) unstable; urgency=medium
+
+  * Upload to unstable.
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Fri, 05 Jul 2019 18:24:07 +0200
+
+libbluray (1:1.1.2-1) experimental; urgency=medium
+
+  * New upstream release.
+  * debian/patches: Drop patch to workaround already fixed #751532.
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Mon, 10 Jun 2019 10:52:37 +0200
+
+libbluray (1:1.1.1-2) experimental; urgency=medium
+
+  * debian/libbluray-bdj.install: Revert "install files from usr/share/java".
+    (Closes: #926746)
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Wed, 10 Apr 2019 09:41:40 +0200
+
+libbluray (1:1.1.1-1) experimental; urgency=medium
+
+  * New upstream release.
+  * debian/: Bump debhelper compat to 12.
+  * debian/libbluray-bdj.install: Install files from usr/share/java.
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Sat, 06 Apr 2019 17:51:37 +0200
+
+libbluray (1:1.1.0-1) unstable; urgency=medium
+
+  [ Felipe Sateler ]
+  * Change maintainer address to debian-multimedia@lists.debian.org
+
+  [ Sebastian Ramacher ]
+  * New upstream release.
+    - Add support for Java 9 and higher. (Closes: #893227)
+  * debian/control: Bump Standards-Version.
+  * debian/patches: Refresh patches.
+  * debian/:
+    - Build with the default JDK again.
+    - Disable doxygen latex output until either doxygen or texlive are fixed.
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Tue, 12 Feb 2019 15:36:35 +0100
+
+libbluray (1:1.0.2-3) unstable; urgency=medium
+
+  * debian/: Force building with Java 8 and also required Java 8 JRE during
+    runtime. Upstream currently neither supports building nor running with
+    Java 9 and requires major changes.
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Tue, 03 Apr 2018 09:20:42 +0200
+
+libbluray (1:1.0.2-2) unstable; urgency=medium
+
+  * debian/control:
+    - Bump Standards-Version.
+    - Move to salsa.debian.org.
+    - Depend on packages referenced by pkg-config file. (Closes: #883908)
+  * debian/: Bump debhelper compat to 11.
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Sun, 04 Feb 2018 21:16:18 +0100
+
+libbluray (1:1.0.2-1) unstable; urgency=medium
+
+  * New upstream release.
+  * debian/control:
+    - Bump Standards-Version.
+    - Remove now obsolete Pre-Depends.
+  * debian/patches: Refreshed.
+  * debian/libbluray-doc.lintian-overrides: Removed, no longer needed.
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Sun, 03 Dec 2017 23:48:16 +0100
+
+libbluray (1:1.0.1.deb1-2) unstable; urgency=medium
+
+  * Upload to unstable.
+  * debian/control:
+    - Remove B-D-I on transitional latex-xcolor (Closes: #865250)
+    - Bump Standards-Version to 4.0.0. Support for DEB_BUILD_OPTIONS=nodoc is
+      omitted until debhelper properly supports it (#865707).
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Sun, 25 Jun 2017 20:31:14 +0200
+
+libbluray (1:1.0.1.deb1-1) experimental; urgency=medium
+
+  * Re-import 1.0.1 upstream release.
+    - Fixed SONAME issues.
+    - Fixed copy of libudfread.
+  * debian/copyright: Update copyright years.
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Thu, 15 Jun 2017 12:26:15 +0200
+
+libbluray (1:1.0.1-1) experimental; urgency=medium
+
+  * New upstream release.
+  * debian/rules: Remove obsolete flags.
+  * debian/patches:
+    - Refresh patches.
+    - Revert accidental SONAME decrease.
+  * debian/copyright: Update copyright years.
+  * debian/control: Use libasm-java. (Closes: #839720)
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Wed, 14 Jun 2017 21:39:03 +0200
+
+libbluray (1:1.0.0-2) experimental; urgency=medium
+
+  * debian/copyright: Add missing attributions and update copyright years.
+    (Closes: #856647)
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Sat, 04 Mar 2017 11:08:30 +0100
+
+libbluray (1:1.0.0-1) experimental; urgency=medium
+
+  * New upstream release.
+  * Bump SONAME: libbluray1 -> libbluray2.
+  * debian/{rules,libbluray-docs*}: Do not use incompatible jquery.js.
+  * debian/patches: Refreshed.
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Thu, 02 Mar 2017 19:55:21 +0100
+
+libbluray (1:0.9.3-3) unstable; urgency=medium
+
+  [ Sebastian Ramacher ]
+  * debian/{control,rules,compat}: Bump to debhelper compat 10.
+  * debian/{control,rules}: Demote javahelper to B-D-I (Closes: #841711)
+
+  [ Dylan Aïssi ]
+  * Add a patch to fix spelling error.
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Wed, 16 Nov 2016 20:24:17 +0100
+
+libbluray (1:0.9.3-2) unstable; urgency=medium
+
+  * debian/rules:
+     - Explicitly disable JAR builds if not required.
+     - Fix -arch/-indep rules split.
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Wed, 18 May 2016 02:28:31 +0200
+
+libbluray (1:0.9.3-1) unstable; urgency=medium
+
+  [ Alessio Treglia ]
+  * Remove myself from the Uploaders list
+
+  [ Sebastian Ramacher ]
+  * New upstream release.
+  * debian/rules: Remove no longer needed dh_strip override.
+  * debian/patches/03_split-jar-build-for-arch-all.patch: Removed, included
+    upstream.
+  * debian/libbluray1.symbols: Add new symbol.
+  * debian/control:
+    - Bump Standards-Version.
+    - Update Vcs-*.
+  * debian/copyright:
+    - Update copyright years.
+    - Update a path.
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Tue, 17 May 2016 23:16:39 +0200
+
+libbluray (1:0.9.2-2) unstable; urgency=medium
+
+  * Migrate to automatic dbg packages.
+    - debian/control:
+      + B-D on debhelper >= 9.20151219
+      + Remove libbluray1-dbg.
+    - debian/rules: Run dh_strip with --ddeb-migration.
+  * debian/patches:
+    - 01_java-compat.patch: Removed, no longer needed.
+    - 05_use-system-asm.patch: Refreshed.
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Sun, 20 Dec 2015 20:57:50 +0100
+
+libbluray (1:0.9.2-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Tue, 01 Dec 2015 23:08:29 +0100
+
+libbluray (1:0.9.1-1) unstable; urgency=medium
+
+  * New upstream release.
+  * debian/copyright: Add contrib/asm.
+  * debian/patches/05_use-system-asm.patch: Use system copy of libasm4-java.
+  * debian/control: Add libasm4-java to B-D-I.
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Wed, 04 Nov 2015 20:05:43 +0100
+
+libbluray (1:0.9.0-1) unstable; urgency=medium
+
+  * New upstream release.
+  * debian/libbluray1.symbols: Add new symbols.
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Sun, 04 Oct 2015 17:39:07 +0200
+
+libbluray (1:0.8.1-1) unstable; urgency=medium
+
+  * New upstream release.
+  * debian/patches/05_bd_open-return-NULL-if-disc-root-is-NULL.patch: Removed,
+    included upstream.
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Sat, 23 May 2015 16:58:44 +0200
+
+libbluray (1:0.8.0-2) unstable; urgency=medium
+
+  * debian/patches/05_bd_open-return-NULL-if-disc-root-is-NULL.patch: Fix
+    crash when accessing empty discs. (Closes: #785159)
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Wed, 13 May 2015 23:14:05 +0200
+
+libbluray (1:0.8.0-1) unstable; urgency=medium
+
+  * New upstream release.
+  * debian/patches: Refresh patches.
+  * debian/libbluray1.symbols: Add new symbols.
+  * debian/copyright: Add copyright information for libudfread.
+  * debian/rules: Build with --enable-udf.
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Sun, 03 May 2015 01:39:41 +0200
+
+libbluray (1:0.7.0-2) unstable; urgency=medium
+
+  * Upload to unstable.
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Sat, 25 Apr 2015 10:48:28 +0200
+
+libbluray (1:0.7.0-1) experimental; urgency=medium
+
+  * New upstream release.
+  * debian/patches: Refresh patches.
+  * debian/control:
+    - Add libfontconfig-dev to Build-Depends.
+    - Bump Standards-Version.
+  * debian/libbluray1.symbols: Add new symbols.
+  * debian/copyright: Update copyright years.
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Wed, 28 Jan 2015 01:48:57 +0100
+
+libbluray (1:0.6.2-1) unstable; urgency=medium
+
+  * New upstream release.
+  * debian/control: Add graphviz to Build-Depends-Indep for doxygen
+    documentation.
+  * debian/patches: Refreshed.
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Thu, 04 Sep 2014 19:11:51 +0200
+
+libbluray (1:0.6.1-2) unstable; urgency=medium
+
+  * debian/patches/03_split-jar-build-for-arch-all.patch: Don't fail if ant is
+    not there and we don't build the jar.
+  * debian/rules: Build with --disable-silent-rules.
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Mon, 04 Aug 2014 21:28:27 +0200
+
+libbluray (1:0.6.1-1) unstable; urgency=medium
+
+  * New upstream release.
+  * debian/copyright: Remove Files-Excluded again. Upstream no longer includes
+    the files we had to remove.
+  * debian/patches/04_kfreebsd-include.patch: Refreshed.
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Mon, 04 Aug 2014 19:13:20 +0200
+
+libbluray (1:0.6.0+dfsg-2) unstable; urgency=medium
+
+  * debian/patches/04_kfreebsd-include.patch: Add a workaround for #751532.
+    (Closes: #751433).
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Sat, 28 Jun 2014 02:27:46 +0200
+
+libbluray (1:0.6.0+dfsg-1) unstable; urgency=medium
+
+  [ Sebastian Ramacher ]
+  * debian/control: Remove Andres Meja from Uploaders. Andres is MIA according
+    to the MIA team. Thank you for maintaining libbluray, Andres! (Closes:
+    #743571)
+  * debian/watch: Mangle Debian version.
+  * debian/copyright:
+    - Add myself.
+    - Update copyright years.
+    - Document excluded files.
+    - Add license information for JNI headers.
+
+  [ Rico Tzschichholz ]
+  * New upstream release (0.6.0)
+    - Improved BD-J support (Most BD-J discs are correctly played).
+    - Mark BD-J titles supported in BLURAY_DISC_INFO if BD-J is functional.
+    - Install .jar files to datadir (/usr/share/java/) instead of libdir.
+      (LP: #1302319)
+    - Added version number to .jar file names.
+    - Added JNI headers for BD-J (cross) compilation.
+    - Added HDMV/BD-J title information to BLURAY_DISC_INFO.
+    - Added disc application info to BLURAY_DISC_INFO.
+    - Added bd_set_rate().
+    - Added color keys (RED, GREEN, YELLOW, BLUE).
+    - Improved error resilence.
+    - Fix build without libxml.
+    - Fix build failures with OpenJDK 8. (Closes: #746729)
+  * Repacked tarball to drop prebuilt binaries
+  * Upstream installs libbluray-.jar properly now
+  * Update symbols file
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Thu, 12 Jun 2014 14:34:26 +0200
+
+libbluray (1:0.5.0-2) unstable; urgency=medium
+
+  * Build JAR file only if we're building Architecture: all packages.
+    - debian/patches/03_split-jar-build-for-arch-all.patch: Add option to
+      selectively build JAR file.
+    - debian/rules:
+      + Only build JAR file if we are building libbluray-bdj.
+      + Build with BD-J support on all architectures.
+    - debian/control: Move ant to Build-Depends-Indep.
+  * debian/libbluray-doc.examples: Provide example source.
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Sun, 09 Feb 2014 22:11:25 +0100
+
+libbluray (1:0.5.0-1) unstable; urgency=low
+
+  [ Rico Tzschichholz ]
+  * New upstream release (0.5.0) (Closes: #734529)
+    - Fixes build issues with newer freetype. (Closes: #733400)
+    - Portability fixes.
+    - Build system updates.
+    - Improved BD-J support (still alpha).
+    - Improved updating of application-allocated ARGB frame buffer.
+    - Get JRE library location from registry (Windows).
+    - Added bd_get_main_title().
+    - Added BD_EVENT_ERROR when title playback fails.
+    - Added BD-J flags to disc info.
+    - Added support for user timeout in HDMV menus.
+    - Added cropping of RLE images. Cropping values in overlay are now always 0.
+    - Added support for LIBAACS_PATH and LIBBDPLUS_PATH environment variables.
+    - Added timestamp based m2ts stream filtering.
+
+  [ Sebastian Ramacher ]
+  * Build with dh-autoreconf. Thanks to Colin Watson for the patch.
+    (Closes: #737652)
+  * Build Doxygen documentation only in -indep.
+    - debian/control: Move LaTeX and Doxygen build dependencies to
+      Build-Depends-Indep.
+    - debian/rules: Replace override_dh_auto_build target with
+      override_dh_auto_build-indep target.
+  * debian/control:
+    - Bump debhelper to >= 9.
+    - Make ant and javahelper B-D linux-any specific to match B-D on
+      default-jdk.
+    - Bump Standards-Version to 3.9.5.
+    - Add myself to Uploaders.
+  * debian/rules: Remove unused and unnecessary flags.
+  * debian/copyright: Update copyright years and holders.
+  * debian/libbluray1.symbols: Add symbols file.
+  * debian/bd_info.1: Add manpage for bd_info.
+  * debian/patches/02_online-image.patch: Do not fetch images from the web.
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Sun, 09 Feb 2014 02:10:53 +0100
+
+libbluray (1:0.4.0-1) unstable; urgency=low
+
+  [ Rico Tzschichholz ]
+  * New upstream release (0.4.0)
+    - Fixed slide shows: always cut reads at clip end boundary
+    - Fixed logging with non-default mask
+    - Fixed buffer overflow in bd_psr_unregister_cb()
+    - Fixed IG background when button image position changes
+    - Fixed BD-J tearing issues
+    - Changed default PhoneME library name in Windows (cvm -> cvmi)
+    - Initialize default player region code to B
+    - Improved BD-J support (still alpha)
+    - Improved language-based stream autoselection
+    - Added missing Java files to distribution package
+    - Added support for multi-clip sub paths
+    - Added bd_select_stream()
+    - Added menu page effects
+    - Added button animations
+    - Added initial support for BluRay Text Subtitles
+    - Added bd_read_clpi(): use only public API in clpi_dump
+    - Added reference-counted RLE images
+  * New upstream release (0.3.0)
+    - Build fixes
+    - Fixed stopping playback from pop-up menu
+    - Fixed multithreading issues in API
+    - Fixed initial setting for player profile
+    - Fixed stack corruption with long log strings
+    - Improved configure script
+    - Improved Visual Studio support
+    - Improved BD-J support (still alpha)
+    - Allow changing player version
+    - Added PG (subtitle) decoding and rendering support
+    - Added ARGB overlay interface for BD-J graphics
+    - Added events for discontinuity, idle state and 3D mode
+    - Added playmarks to BLURAY_TITLE_INFO
+    - added start time, in time and out time to BLURAY_CLIP_INFO
+    - added sub-path id to BLURAY_STREAM_INFO
+    - Added bd_seek_playitem()
+    - Added bd_set_scr()
+    - Added 3D extension data to raw clip info
+    - added 3D player settings
+    - Added cropping and palette update flag to BD_OVERLAY
+  * debian/patches:
+    - Refreshed 01_java-compat.patch and keep targeting 1.5
+  * debian/control,libbluray-bin:
+    - Install /usr/bin/bd_info
+    - Add explicit build-dep on pkg-config (Closes: #688578)
+    - Add build-dep on libfreetype6-dev
+  * debian/rules:
+    - Use --fail-missing
+    - Pass --with-libxml2, --with-bdj-type=j2se and --with-freetype
+
+  [ Alessio Treglia ]
+  * Upload to unstable.
+  * Set VCS urls to use canonical form.
+  * Update debian/copyright:
+    - Refresh the format according to debian copyright format 1.0
+    - Add myself to the copyright holders list of the debian/ directory.
+    - Group files by license, split licenses from file stanzas.
+  * Refresh 01_java-compat.patch.
+  * debian/rules: Fix JAVA detection.
+
+ -- Alessio Treglia <alessio@debian.org>  Sat, 05 Oct 2013 13:26:02 +0100
+
+libbluray (1:0.2.3-1) experimental; urgency=low
+
+  [ Rico Tzschichholz ]
+  * New upstream release
+    - Fixed memory leaks
+    - Automatic language selection: disable subtitles when audio is in the
+      same language
+    - Fixed accessing outside of array bounds
+    - Default to stream 0 when requested language not found
+    - Install bd_info
+    - Added disc ID and AACS MKB version to BD_DISC_INFO
+    - Added extended AACS error codes
+
+  [ James Page ]
+  * Transition package to use default java implementation:
+    - d/control: BD on default-jdk for linux archs.
+    - d/rules: Use /usr/lib/jvm/default-java for JAVA_HOME.
+    - d/patches/java-compat.patch: Set source/target = 1.5 to ensure
+      that backwards compatible bytecode is built.
+
+ -- Rico Tzschichholz <ricotz@ubuntu.com>  Wed, 19 Sep 2012 08:46:53 +0200
+
+libbluray (1:0.2.2-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Rico Tzschichholz <ricotz@ubuntu.com>  Tue, 20 Mar 2012 13:55:03 +0100
+
+libbluray (1:0.2.1+git20111208.63e308d-5) unstable; urgency=low
+
+  * Enable hardened compiler flags.
+
+ -- Andres Mejia <amejia@debian.org>  Mon, 19 Mar 2012 10:03:21 -0400
+
+libbluray (1:0.2.1+git20111208.63e308d-4) unstable; urgency=low
+
+  * Allow dev package to be multiarch installable.
+  * Bump to Standards-Version 3.9.3.
+  * Add Multi-Arch: foreign field for libbluray-bdj. Needed since libbluray1 has
+    a Suggests dependency on libbluray-bdj.
+
+ -- Andres Mejia <amejia@debian.org>  Fri, 16 Mar 2012 17:52:52 -0400
+
+libbluray (1:0.2.1+git20111208.63e308d-3) unstable; urgency=low
+
+  * Demote libbluray-bdj to Suggests in the libbluray1 library package.
+    Thanks to Micah Gersten <micahg@ubuntu.com> and
+    Paul Fertser <fercerpav@gmail.com> (Closes: #656850)
+
+ -- Reinhard Tartler <siretart@tauware.de>  Mon, 20 Feb 2012 10:52:40 +0100
+
+libbluray (1:0.2.1+git20111208.63e308d-2) unstable; urgency=low
+
+  * Demote libbluray-bdj to libbluray-dev's Suggests since it is actually
+    unneeded by a number of reverse dependencies; thanks to Neil Williams
+    for having pointed this out. (Closes: #659165)
+
+ -- Alessio Treglia <alessio@debian.org>  Fri, 10 Feb 2012 09:57:07 +0100
+
+libbluray (1:0.2.1+git20111208.63e308d-1) unstable; urgency=low
+
+  * New upstream git snapshot from commit
+    63e308d9c6ce1cd361fed713620fab16d67a84e1
+  * debian/patches:
+    - Drop soname-bump.patch, which has been done upstream now
+
+ -- Rico Tzschichholz <ricotz@ubuntu.com>  Fri, 16 Dec 2011 10:43:00 +0100
+
+libbluray (1:0.2~git20111001.8e5d241-1) unstable; urgency=low
+
+  * Include all files from upstream source.
+  * Remove gbp options which are always default.
+  * Use different mechanism to set soname.
+  * Don't use dh-autoreconf.
+  * Put dh sequence as first option.
+  * Use dh --parallel.
+  * Update this package so it supports multiarch.
+  * Update upstream version to '0.2', which upstream uses.
+  * Include static lib.
+
+ -- Andres Mejia <amejia@debian.org>  Sat, 01 Oct 2011 17:57:33 -0400
+
+libbluray (1:0.0~git20110717.3477b65-5) unstable; urgency=low
+
+  * Restrict JAVA related checks to Linux architectures (Fixes FTBFS on !Linux)
+    Thanks to Christoph Egger for reporting on IRC
+  * normalize debian/copyright with config-edit.
+    Thanks to lintian for finding an obsoleted field
+
+ -- Reinhard Tartler <siretart@tauware.de>  Fri, 30 Sep 2011 08:58:32 +0200
+
+libbluray (1:0.0~git20110717.3477b65-4) unstable; urgency=low
+
+  * Set JAVA_HOME variable correctly to accommodate the multiarch changes.
+    Thanks to Mònica Ramírez Arceda <monica@probeta.net> for reporting
+    (Closes: #640337)
+
+ -- Reinhard Tartler <siretart@tauware.de>  Thu, 29 Sep 2011 18:22:24 +0200
+
+libbluray (1:0.0~git20110717.3477b65-3) unstable; urgency=low
+
+  * Enable bdjava on linux hosts only, Closes: #638222
+  * Remove files that are deleted during build
+  * Invoke javahelper sequence only on linux
+  * Build depend on openjdk-6-jdk instead of default-jdk,
+    gcj seems to have problems with ant and jni
+  * Add myself to uploaders
+
+ -- Reinhard Tartler <siretart@tauware.de>  Thu, 18 Aug 2011 18:16:29 +0200
+
+libbluray (1:0.0~git20110717.3477b65-2) unstable; urgency=low
+
+  [ Andres Mejia ]
+  * debian/copyright:
+    - Include myself in copyright for debian packaging. Also distribute
+      the packaging under the same terms as libbluray.
+
+  [ Alessio Treglia ]
+  * Add libaacs0 to libbluray1's Recommends:
+    - No need to build-depend on libaacs0 as libbluray1 is able to load
+      it via dlopen()
+  * debian/copyright: Use the Comment field (as per DEP-5 rev. 174)
+  * debian/control: Add myself as uploader.
+
+ -- Alessio Treglia <alessio@debian.org>  Sun, 14 Aug 2011 11:24:40 +0200
+
+libbluray (1:0.0~git20110717.3477b65-1) unstable; urgency=low
+
+  * Package new upstream git snapshot.
+  * Update to my @debian.org email.
+  * Bump soname. (Closes: #633462)
+  * Fix build dependencies for generating documentation.
+  * Add watch file.
+
+ -- Andres Mejia <amejia@debian.org>  Mon, 18 Jul 2011 22:34:06 -0400
+
+libbluray (0.2~git20110613.e93aa91-1) unstable; urgency=low
+
+  * New upstream git snapshot from commit
+    e93aa914327f8599ee69665a877a3777b1809691
+
+ -- Rico Tzschichholz <ricotz@ubuntu.com>  Wed, 15 Jun 2011 20:37:33 +0200
+
+libbluray (0.2~git20110427.8b86664-1) unstable; urgency=low
+
+  * New upstream git snapshot from commit
+    8b866642a667c81cbad475308686484af8ea864b.
+  * Rico Tzschichholz was added as uploader.
+  * Bump to Standards-Version 3.9.2.
+  * Add libxml2-dev as build dependency.
+  * Introduce libbluray-bdj package for BD-J library.
+  * Introduce package for documentation.
+  * Correct package short descriptions.
+
+ -- Andres Mejia <mcitadel@gmail.com>  Wed, 27 Apr 2011 17:41:28 -0400
+
+libbluray (0.1~git20100913.16c8a21-1) unstable; urgency=low
+
+  * Initial release. (Closes: #591192)
+
+ -- Andres Mejia <mcitadel@gmail.com>  Mon, 13 Sep 2010 15:32:57 -0400

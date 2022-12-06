@@ -1,3 +1,9 @@
+libbluray (10.0.0.1-deepin2) UNRELEASED; urgency=medium
+
+  * 
+
+ -- ZhengJie-Niu <niuzj0@gmail.com>  Tue, 06 Dec 2022 17:43:27 +0000
+
 libbluray (10.0.0.1-deepin1) unstalbe; urgency=medium
 
   * add function to fix build error

@@ -25,6 +25,7 @@ import java.awt.BDToolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.io.File;
+import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
@@ -115,9 +116,48 @@ public class Libbluray {
         }
     }
 
-    /*
-     *
-     */
+    public static int getJavaMajor() {
+        try {
+            String ver = System.getProperty("java.version");
+            if (ver.startsWith("1."))
+                ver = ver.substring(2, 3);
+            if (ver.indexOf(".") != -1)
+                ver = ver.substring(0, ver.indexOf("."));
+            if (ver.indexOf("-") != -1)
+                ver = ver.substring(0, ver.indexOf("-"));
+            return Integer.parseInt(ver);
+        } catch (Throwable t) {
+            System.err.println("getJavaMajor(): " + t);
+        }
+        return 0;
+    }
+
+    private static void setSecurityManager(SecurityManager sm) throws Exception {
+        try {
+            System.setSecurityManager(sm);
+            return;
+        } catch (Exception ex) {
+            if (getJavaMajor() < 18)
+                throw ex;
+
+            /* Workaround for Java 18 security manager issues.
+             *   Suggested method (setting security manager to "allow" in command line args)
+             *   fails with older Java versions.
+             *   And, Java version is hard to figure out before launching JVM.
+             */
+            System.err.println("Detected Java >= 18, trying setSecurityManager() workaround");
+            try {
+                Method method = System.class.getDeclaredMethod("implSetSecurityManager",
+                                                              new Class [] { SecurityManager.class });
+                method.setAccessible(true);
+                method.invoke(null, new Object [] { (Object)sm } );
+                return;
+            } catch (Exception ex2) {
+                System.err.println("" + ex2);
+                throw new RuntimeException("", ex);
+            }
+        }
+    }
 
     private static boolean initOnce = false;
     private static void initOnce() {
@@ -125,6 +165,11 @@ public class Libbluray {
             return;
         }
         initOnce = true;
+
+        Logger.getLogger("Libbluray").info(
+            "Using Java " + System.getProperty("java.vm.specification.version", "?") +
+            " (" + System.getProperty("java.vm.version", "?") + ")" +
+            " from '" + System.getProperty("java.home", "?") + "'");
 
         /* hook system properties (provide Xlet-specific user.dir) */
         try {
@@ -344,7 +389,7 @@ public class Libbluray {
         System.setProperty("bluray.network.connected", "YES");
 
         try {
-            System.setSecurityManager(new BDJSecurityManager(discRoot, persistentRoot, budaRoot));
+            setSecurityManager(new BDJSecurityManager(discRoot, persistentRoot, budaRoot, getJavaMajor()));
         } catch (Exception ex) {
             System.err.println("System.setSecurityManager() failed: " + ex);
             throw new SecurityException("Failed initializing SecurityManager");
@@ -375,7 +420,7 @@ public class Libbluray {
 
             /* all Xlet contexts (and threads) should be terminated now */
             try {
-                System.setSecurityManager(null);
+                setSecurityManager(null);
             } catch (Exception ex) {
                 System.err.println("System.setSecurityManager(null) failed: " + ex);
             }
@@ -390,9 +435,14 @@ public class Libbluray {
             Status.shutdown();
             ServiceContextFactoryImpl.shutdown();
             FontFactory.unloadDiscFonts();
-            CacheDir.remove();
         } catch (Throwable e) {
             System.err.println("shutdown() failed: " + e + "\n" + Logger.dumpStack(e));
+        }
+        try {
+            BDJAppProxy.cleanup();
+            CacheDir.remove();
+        } catch (Throwable e) {
+            System.err.println("cleanup failed: " + e + "\n" + Logger.dumpStack(e));
         }
         nativePointer = 0;
         titleInfos = null;
@@ -716,7 +766,7 @@ public class Libbluray {
             case 404: key = HRcEvent.VK_COLORED_KEY_1; break;
             case 405: key = HRcEvent.VK_COLORED_KEY_2; break;
             case 406: key = HRcEvent.VK_COLORED_KEY_3; break;
-            case 17:
+            case 17: /* BD_VK_MOUSE_ACTIVATE */
                 result = false;
                 if ((param & 0x80000000) != 0) {
                     result = java.awt.BDJHelper.postMouseEvent(MouseEvent.MOUSE_PRESSED) || result;

@@ -18,8 +18,8 @@ Build-Depends-Indep:
  ant,
  doxygen,
  javahelper
-Standards-Version: 4.5.1
-Homepage: http://www.videolan.org/developers/libbluray.html
+Standards-Version: 4.6.1
+Homepage: https://www.videolan.org/developers/libbluray.html
 Vcs-Git: https://salsa.debian.org/multimedia-team/libbluray.git
 Vcs-Browser: https://salsa.debian.org/multimedia-team/libbluray
 Rules-Requires-Root: no

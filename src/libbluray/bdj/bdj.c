@@ -128,6 +128,10 @@ static void *_load_jvm_win32(const char **p_java_home)
         wcscpy(buf_loc, L"SOFTWARE\\JavaSoft\\JRE\\");
         r = RegOpenKeyExW(HKEY_LOCAL_MACHINE, buf_loc, 0, KEY_READ, &hkey);
     }
+    if (r != ERROR_SUCCESS) {
+        wcscpy(buf_loc, L"SOFTWARE\\JavaSoft\\JDK\\");
+        r = RegOpenKeyExW(HKEY_LOCAL_MACHINE, buf_loc, 0, KEY_READ, &hkey);
+    }
 # endif
     if (r != ERROR_SUCCESS) {
         BD_DEBUG(DBG_BDJ | DBG_CRIT, "Error opening registry key SOFTWARE\\JavaSoft\\Java Runtime Environment\\\n");
@@ -401,16 +405,25 @@ static void *_load_jvm(const char **p_java_home, const char *app_java_home)
 #    ifdef __FreeBSD__
                                             "/usr/local/openjdk8",
                                             "/usr/local/openjdk11",
+                                            "/usr/local/openjdk17",
+#    elif defined(__OpenBSD__)
+                                            "/usr/local/jdk-1.8.0",
+                                            "/usr/local/jdk-11",
+                                            "/usr/local/jdk-17",
 #    else
+                                            "/etc/alternatives/java_sdk_openjdk",
+                                            "/etc/alternatives/java_sdk",
                                             "/usr/lib/jvm/default-java",
                                             "/usr/lib/jvm/default",
+                                            "/usr/lib/jvm/jre",
                                             "/usr/lib/jvm/",
                                             "/etc/java-config-2/current-system-vm",
-                                            "/usr/lib/jvm/java-7-openjdk",
-                                            "/usr/lib/jvm/java-7-openjdk-" JAVA_ARCH,
                                             "/usr/lib/jvm/java-8-openjdk",
                                             "/usr/lib/jvm/java-8-openjdk-" JAVA_ARCH,
-                                            "/usr/lib/jvm/java-6-openjdk",
+                                            "/usr/lib/jvm/java-11-openjdk",
+                                            "/usr/lib/jvm/java-11-openjdk-" JAVA_ARCH,
+                                            "/usr/lib/jvm/java-17-openjdk",
+                                            "/usr/lib/jvm/java-17-openjdk-" JAVA_ARCH,
 #    endif
     };
     static const char * const jvm_dir[]  = {"jre/lib/" JAVA_ARCH "/server",
@@ -527,7 +540,7 @@ static char *_find_libbluray_jar0()
     // pre-defined search paths for libbluray.jar
     static const char * const jar_paths[] = {
 #ifndef _WIN32
-#  ifdef __FreeBSD__
+#  if defined(__FreeBSD__) || defined(__OpenBSD__)
         "/usr/local/share/java/" BDJ_JARFILE,
 #  else
         "/usr/share/java/" BDJ_JARFILE,
@@ -571,18 +584,22 @@ static char *_find_libbluray_jar0()
     // check directory where libbluray.so was loaded from
     const char *lib_path = dl_get_path();
     if (lib_path) {
-        char *cp = str_printf("%s" BDJ_JARFILE, lib_path);
-        if (!cp) {
-            BD_DEBUG(DBG_CRIT, "out of memory\n");
-            return NULL;
-        }
+        for(i =0; i<2; i++) {
+            const char * relinstalldir[2] = { "",
+                                              ".." DIR_SEP "share" DIR_SEP "java" DIR_SEP };
+            char *cp = str_printf("%s%s%s", lib_path, relinstalldir[i], BDJ_JARFILE);
+            if (!cp) {
+                BD_DEBUG(DBG_CRIT, "out of memory\n");
+                return NULL;
+            }
 
-        BD_DEBUG(DBG_BDJ, "Checking %s ...\n", cp);
-        if (_can_read_file(cp)) {
-            BD_DEBUG(DBG_BDJ, "using %s\n", cp);
-            return cp;
+            BD_DEBUG(DBG_BDJ, "Checking %s ...\n", cp);
+            if (_can_read_file(cp)) {
+                BD_DEBUG(DBG_BDJ, "using %s\n", cp);
+                return cp;
+            }
+            X_FREE(cp);
         }
-        X_FREE(cp);
     }
 
     // check pre-defined directories
@@ -1056,7 +1073,7 @@ BDJAVA* bdj_open(const char *path, struct bluray *bd,
 
     if (debug_mask & DBG_JNI) {
         int version = (int)(*env)->GetVersion(env);
-        BD_DEBUG(DBG_BDJ, "Java version: %d.%d\n", version >> 16, version & 0xffff);
+        BD_DEBUG(DBG_BDJ, "Java JNI version: %d.%d\n", version >> 16, version & 0xffff);
     }
 
     if (!_bdj_init(env, bd, path, bdj_disc_id, cfg)) {

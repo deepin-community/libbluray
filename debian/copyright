@@ -9,7 +9,7 @@ Copyright: 2009-2010, hpi1
            2010, Joakim
            2009-2010, Obliter0n
            2010, William Hahne
-           2003,2011-2014, the VideoLAN team
+           2003,2011-2021, the VideoLAN team
            2010-2017, Petri Hintukainen
            2012, Konstantin Pavlov
 License: LGPL-2.1+
@@ -74,7 +74,7 @@ Files: debian/*
 Copyright: 2010-2011, Andres Mejia <amejia@debian.org>
            2011, Rico Tzschichholz <ricotz@ubuntu.com>
            2013, Alessio Treglia <alessio@debian.org>
-           2014-2017, Sebastian Ramacher <sramacher@debian.org>
+           2014-2022, Sebastian Ramacher <sramacher@debian.org>
 License: LGPL-2.1+
 
 License: LGPL-2.1+
